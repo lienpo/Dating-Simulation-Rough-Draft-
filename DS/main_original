@@ -1,0 +1,42 @@
+'''
+out = False
+
+while( not out ):
+        option = input("What to you want to do? --talk(1)  --leave(2) --look around(3) (Enter 0 to quit)? ")
+        if( option == 1 or option == 2 or option == 3):
+                You.verify_selection(option)
+                
+        elif( option == 0 ):
+                out = True
+        else:
+                print("That is not a valid option")
+
+
+        if(option == 1):
+                You.current_loc.print_all_npcs()
+                if(len(You.current_loc.npc_names) == 0):
+                        print("There is no one here.")
+                elif(len(You.current_loc.npc_names) > 0):
+                        print("There are " + str(len(You.current_loc.npc_names)) + " people here.")
+                        You.current_loc.print_all_npcs()
+                        option = input("Who do you want to talk to? ")
+                        if You.verify_selection(option, "npcs") == True:
+                                You.current_loc.npc_names[option - 1].speak()
+        
+          
+        elif(option == 2):
+                You.give_location_and_neighbors()
+                option = input("Where do you want to go to? ")
+                if You.verify_selection(option, "neighbors") == True:
+                        You.goto(option)
+                        You.goto_inform()
+                
+                else:
+                        print("You didn't go anywhere.")
+                        print("\n")
+        
+        elif(option == 0):
+                print("Goodbye")
+                out = True
+'''
+
